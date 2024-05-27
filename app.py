@@ -2,8 +2,8 @@ from flask import Flask,request,render_template
 from pymongo import MongoClient
 
 client=MongoClient("mongodb://localhost:27017")
-db=client["naya"]
-collection=db["btech"]
+db=client["student"]
+collection=db["registration"]
 
 
 app = Flask(__name__)
@@ -15,9 +15,15 @@ def index():  # put application's code here
 
 @app.route("/submit",methods=["GET","POST"])
 def submit():
-    username=request.form["username"]
-    password=request.form["password"]
-    collection.insert_one({"username":username,"password":password})
+    name=request.form["name"]
+    registration_number=request.form["registration_number"]
+    roll_number=request.form["roll_number"]
+    email=request.form["email"]
+    school=request.form["school"]
+    phone=request.form["phone"]
+    admission_year=request.form["admission_year"]
+    address=request.form["address"]
+    collection.insert_one({"name":name,"registration_number":registration_number,"roll_number":roll_number,"email":email,"school":school,"phone":phone,"admission_year":admission_year,"address":address})
     data=collection.find()
     return render_template("dashboard.html",data=data)
 

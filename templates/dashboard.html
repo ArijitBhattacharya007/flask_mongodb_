@@ -12,18 +12,32 @@
 <table class="table table-dark">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">Username</th>
-      <th scope="col">Password</th>
+        <th scope="col">Index</th>
+      <th scope="col">Document ID</th>
+      <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">School</th>
+        <th scope="col">Address</th>
+        <th scope="col">Admission Year</th>
+        <th scope="col">Roll Number</th>
+        <th scope="col">Registration Number</th>
     </tr>
   </thead>
 
   <tbody>
   {% for i in data %}
     <tr>
-      <td><input type="radio" name="{{i._id}}" ></td>
-      <td><input name="username" type="text" value="{{ i.username }}"></td>
-      <td>{{ i.password }}</td>
+        <th scope="row">{{ loop.index }}</th>
+        <th scope="row">{{ i._id }}</th>
+        <td>{{ i.name }}</td>
+        <td>{{ i.email }}</td>
+        <td>{{ i.phone }}</td>
+        <td>{{ i.school }}</td>
+        <td>{{ i.address }}</td>
+        <td>{{ i.admission_year }}</td>
+        <td>{{ i.roll_number }}</td>
+        <td>{{ i.registration_number }}</td>
     </tr>
   {% endfor %}
   </tbody>
@@ -31,7 +45,7 @@
 </table>
 
 <center>
-    <input type="submit" value="UPDATE">
+    <input class="btn btn-success" type="submit" value="UPDATE">
 </center>
 
 </form>
